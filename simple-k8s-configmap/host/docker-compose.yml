@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  simplek8shosting:
+    image: ${DOCKER_REGISTRY-}simplek8shosting
+    build:
+      context: .
+      dockerfile: Dockerfile

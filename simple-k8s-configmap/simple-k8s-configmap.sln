@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "host", "host\host.csproj", "{EEC9C17C-60DC-439A-BC1C-755FB7694A56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesClassLibrary", "ShapesClassLibrary\ShapesClassLibrary.csproj", "{A3FA7F89-30BF-413E-86C7-241E564AA981}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B6993A5-74F7-4BA0-A99C-61A32747F3D6}
+	EndGlobalSection
+EndGlobal
