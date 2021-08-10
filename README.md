@@ -15,17 +15,20 @@ Demonstrate use of ConfigMap feature in a sample ASP.Net WebAPI is hosted into K
 - Clone.
 - Compile the project and make sure its running using Docker.
 - Build the docker image
-- Push the newly created image to docker image repository.
+- Tag the image with our user name and repository
+- Push the newly created image to your docker image registry.
   - The sample uses Docker Hub for images
+- Change the yml files with your docker user id and registry.
 
-  ## Scenario 1 - Injecting env variable
+## Scenario 1 - Injecting env variable
+
 - Apply the file k8s-docker-desktop-env-var-deploy.yml using kubectl
 - Get the list of services in the deployment and get the NodePort number
 - Navigate to http://localhost:<port number>/Echo
 
 It will show the EnvVars object in the response
 
-  ## Scenario 1 - Injecting env variable
+## Scenario 1 - Injecting env variable
 - Apply the file k8s-docker-desktop-app-settings-deploy.yml using kubectl
 - Get the list of services in the deployment and get the NodePort number
 - Navigate to http://localhost:<port number>/Configurations/MyKey
