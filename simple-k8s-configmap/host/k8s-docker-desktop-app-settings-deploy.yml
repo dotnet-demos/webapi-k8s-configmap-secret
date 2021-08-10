@@ -1,0 +1,80 @@
+﻿apiVersion: v1
+kind: Namespace
+metadata:
+  name: simplek8sconfigmap
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: appsettings-configmap
+  namespace: simplek8sconfigmap
+data:
+  appsettings.json: |-
+    {
+      "MyKey": "My value from appsettings.json present in yml code",
+      "ValueOfPi": "3.14",
+      "Logging": {
+        "LogLevel": {
+          "Default": "Information",
+          "Microsoft": "Warning",
+          "Microsoft.Hosting.Lifetime": "Information"
+        }
+      },
+      "AllowedHosts": "*"
+    }
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapi
+  namespace: simplek8sconfigmap
+  labels:
+    app: weather-forecast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: webapi
+  template:
+    metadata:
+      labels:
+        app: weather-forecast
+        service: webapi
+    spec:
+      containers:
+        - name: webapicontainer
+          image: joymon/simplek8sconfigmap:0.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:80
+          volumeMounts:
+           - name: appsettings-volume
+             mountPath: /app/appsettings.json
+             subPath: appsettings.json
+      volumes:
+        - name: appsettings-volume
+          configMap:
+             name: appsettings-configmap
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapiservice
+  namespace: simplek8sconfigmap
+  labels:
+    app: weather-forecast
+    service: webapi
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort : 80
+      protocol: TCP
+  selector:
+    service: webapi

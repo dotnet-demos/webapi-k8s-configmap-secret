@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31321.278
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "host", "host\host.csproj", "{EEC9C17C-60DC-439A-BC1C-755FB7694A56}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesClassLibrary", "ShapesClassLibrary\ShapesClassLibrary.csproj", "{A3FA7F89-30BF-413E-86C7-241E564AA981}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapesClassLibrary", "ShapesClassLibrary\ShapesClassLibrary.csproj", "{A3FA7F89-30BF-413E-86C7-241E564AA981}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

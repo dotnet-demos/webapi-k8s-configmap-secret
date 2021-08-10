@@ -1,13 +1,23 @@
 ﻿apiVersion: v1
 kind: Namespace
 metadata:
-  name: simplek8shosting-ingress
+  name: simplek8sconfigmap-envvars
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: envvars-configmap
+  namespace: simplek8sconfigmap-envvars
+data:
+  MyEnvVar:  "My value from MyEnvVar present in yml code"
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapi
-  namespace: simplek8shosting-ingress
+  namespace: simplek8sconfigmap-envvars
   labels:
     app: weather-forecast
 spec:
@@ -17,14 +27,13 @@ spec:
       service: webapi
   template:
     metadata:
-      namespace: simplek8shosting-ingress
       labels:
         app: weather-forecast
         service: webapi
     spec:
       containers:
         - name: webapicontainer
-          image: joymon/simplek8shosting:0.0.6
+          image: joymon/simplek8sconfigmap:0.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -32,38 +41,25 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
+            - name: MyEnvVar
+              valueFrom:
+               configMapKeyRef:
+                name: envvars-configmap
+                key: MyEnvVar
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: webapiservice
-  namespace: simplek8shosting-ingress
+  namespace: simplek8sconfigmap-envvars
   labels:
     app: weather-forecast
     service: webapi
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
     - port: 8080
       targetPort : 80
       protocol: TCP
   selector:
     service: webapi
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: webapiingress
-  namespace: simplek8shosting-ingress
-spec:
-  rules:
-  - host: simplek8shostingviahostfile.io # Modify the local machine's' hosts file with a line 127.0.0.1 simplek8shostingviahostfile.io
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: webapiservice
-            port:
-              number: 8080
