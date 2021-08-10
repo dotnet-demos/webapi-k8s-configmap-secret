@@ -28,7 +28,7 @@ Demonstrate use of ConfigMap feature in a sample ASP.Net WebAPI is hosted into K
 
 It will show the EnvVars object in the response
 
-## Scenario 1 - Injecting env variable
+## Scenario 2 - Injecting app.settings file as mount
 - Apply the file k8s-docker-desktop-app-settings-deploy.yml using kubectl
 - Get the list of services in the deployment and get the NodePort number
 - Navigate to http://localhost:<port number>/Configurations/MyKey
