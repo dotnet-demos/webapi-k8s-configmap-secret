@@ -15,6 +15,8 @@ Demonstrate use of ConfigMap feature in a sample ASP.Net WebAPI is hosted into K
 - Clone.
 - Compile the project and make sure its running using Docker.
 - Build the docker image
+  - Use the below command from the solution folder
+  - `docker build -t simplek8sconfigmap -f .\host\Dockerfile .`   
 - Tag the image with our user name and repository
 - Push the newly created image to your docker image registry.
   - The sample uses Docker Hub for images
