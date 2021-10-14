@@ -7,20 +7,39 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "host", "host\host.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShapesClassLibrary", "ShapesClassLibrary\ShapesClassLibrary.csproj", "{A3FA7F89-30BF-413E-86C7-241E564AA981}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5DAEB7C4-39C9-4447-A66A-A7BB337D5AC3}"
+	ProjectSection(SolutionItems) = preProject
+		commands.ps1 = commands.ps1
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		NoVariablesDefault|Any CPU = NoVariablesDefault|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.NoVariablesDefault|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.NoVariablesDefault|Any CPU.Build.0 = Release|Any CPU
 		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EEC9C17C-60DC-439A-BC1C-755FB7694A56}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.NoVariablesDefault|Any CPU.ActiveCfg = Release|Any CPU
+		{A3FA7F89-30BF-413E-86C7-241E564AA981}.NoVariablesDefault|Any CPU.Build.0 = Release|Any CPU
 		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3FA7F89-30BF-413E-86C7-241E564AA981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.Debug|Any CPU.ActiveCfg = NoVariablesDefault
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.Debug|Any CPU.Build.0 = NoVariablesDefault
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.NoVariablesDefault|Any CPU.ActiveCfg = NoVariablesDefault
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.NoVariablesDefault|Any CPU.Build.0 = NoVariablesDefault
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.Release|Any CPU.ActiveCfg = NoVariablesDefault
+		{97BD8284-5D7C-4CE8-AB24-1B716217E7EA}.Release|Any CPU.Build.0 = NoVariablesDefault
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

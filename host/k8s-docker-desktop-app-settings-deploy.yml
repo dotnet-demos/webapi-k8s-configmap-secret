@@ -1,16 +1,16 @@
 ﻿apiVersion: v1
 kind: Namespace
 metadata:
-  name: simplek8sconfigmap
+  name: simplek8s-configmap
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: appsettings-configmap
-  namespace: simplek8sconfigmap
+  namespace: simplek8s-configmap
 data:
-  appsettings.json: |-
+  k8sappsettings.json: |-
     {
       "MyKey": "My value from appsettings.json present in yml code",
       "ValueOfPi": "3.14",
@@ -23,13 +23,12 @@ data:
       },
       "AllowedHosts": "*"
     }
-
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapi
-  namespace: simplek8sconfigmap
+  namespace: simplek8s-configmap
   labels:
     app: weather-forecast
 spec:
@@ -56,7 +55,7 @@ spec:
           volumeMounts:
            - name: appsettings-volume
              mountPath: /app/appsettings.json
-             subPath: appsettings.json
+             subPath: k8sappsettings.json
       volumes:
         - name: appsettings-volume
           configMap:
@@ -66,7 +65,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapiservice
-  namespace: simplek8sconfigmap
+  namespace: simplek8s-configmap
   labels:
     app: weather-forecast
     service: webapi

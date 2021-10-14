@@ -1,23 +1,23 @@
 ﻿apiVersion: v1
 kind: Namespace
 metadata:
-  name: simplek8sconfigmap-envvars
+  name: simplek8s-env-vars
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: envvars-configmap
-  namespace: simplek8sconfigmap-envvars
+  namespace: simplek8s-env-vars
 data:
-  MyEnvVar:  "My value from MyEnvVar present in yml code"
+  MyEnvVar:  "My value of MyEnvVar present in yml code"
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapi
-  namespace: simplek8sconfigmap-envvars
+  namespace: simplek8s-env-vars
   labels:
     app: weather-forecast
 spec:
@@ -51,7 +51,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapiservice
-  namespace: simplek8sconfigmap-envvars
+  namespace: simplek8s-env-vars
   labels:
     app: weather-forecast
     service: webapi
