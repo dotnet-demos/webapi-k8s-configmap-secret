@@ -1,18 +1,18 @@
 ﻿apiVersion: v1
 kind: Namespace
 metadata:
-  name: simplek8s-configmap
+  name: simplek8s-configmap-inline
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: appsettings-configmap
-  namespace: simplek8s-configmap
+  namespace: simplek8s-configmap-inline
 data:
   k8sappsettings.json: |-
     {
-      "MyKey": "My value from appsettings.json present in yml code",
+      "MyKey": "My value from k8sappsettings.json inlined in K8s yml file",
       "ValueOfPi": "3.14",
       "Logging": {
         "LogLevel": {
@@ -28,7 +28,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapi
-  namespace: simplek8s-configmap
+  namespace: simplek8s-configmap-inline
   labels:
     app: weather-forecast
 spec:
@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: webapicontainer
-          image: joymon/simplek8sconfigmap:0.0.1
+          image: joymon/simplek8sconfiguration:0.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -65,7 +65,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: webapiservice
-  namespace: simplek8s-configmap
+  namespace: simplek8s-configmap-inline
   labels:
     app: weather-forecast
     service: webapi

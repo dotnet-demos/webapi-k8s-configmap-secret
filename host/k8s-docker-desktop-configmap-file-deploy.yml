@@ -1,23 +1,24 @@
-﻿apiVersion: v1
+﻿# This won't work by just using Kubectl. Require Helm to replace the file contents.
+apiVersion: v1
 kind: Namespace
 metadata:
-  name: simplek8s-env-vars
+  name: simplek8s-configmap-file
 
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: envvars-configmap
-  namespace: simplek8s-env-vars
+  name: appsettings-configmap
+  namespace: simplek8s-configmap-file
 data:
-  MyEnvVar:  "My value of MyEnvVar present in yml code"
-
+  k8sproduction.appsettings.json: |-
+   {{ .Files.Get "host/appsettings.Production.json" | indent 4 }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapi
-  namespace: simplek8s-env-vars
+  namespace: simplek8s-configmap-file
   labels:
     app: weather-forecast
 spec:
@@ -41,17 +42,20 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
-            - name: MyEnvVar
-              valueFrom:
-               configMapKeyRef:
-                name: envvars-configmap
-                key: MyEnvVar
+          volumeMounts:
+           - name: appsettings-volume
+             mountPath: /app/appsettings.json
+             subPath: k8sproduction.appsettings.json
+      volumes:
+        - name: appsettings-volume
+          configMap:
+             name: appsettings-configmap
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: webapiservice
-  namespace: simplek8s-env-vars
+  namespace: simplek8s-configmap-file
   labels:
     app: weather-forecast
     service: webapi
