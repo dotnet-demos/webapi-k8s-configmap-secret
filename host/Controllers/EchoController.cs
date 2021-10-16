@@ -19,5 +19,11 @@ namespace SimpleK8sHosting.Controllers
             respone.EnvVars = Environment.GetEnvironmentVariables();
             return JsonConvert.SerializeObject(respone);
         }
+        [Route("EnvVars/{name}")]
+        [HttpGet]
+        public string GetEnvVariable(string name)
+        {
+            return Environment.GetEnvironmentVariable("MyEnvVar");
+        }
     }
 }
