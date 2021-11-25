@@ -37,17 +37,16 @@ namespace SimpleK8sHosting
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
+            //if (env.IsDevelopment())
             {
-                Console.WriteLine("I am running in debug mode");
+                Console.WriteLine("I am running in debug mode with swagger support. Consider disabling swagger in production");
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleK8sHosting v1"));
             }
-            else
+            //else
             {
-
-                Console.WriteLine("I am running in prod mode. No Swagger support");
+                //Console.WriteLine("I am running in prod mode. No Swagger support");
             }
             //app.UseHttpsRedirection();
 

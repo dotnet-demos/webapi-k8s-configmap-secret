@@ -23,7 +23,7 @@ namespace SimpleK8sHosting.Controllers
         [HttpGet]
         public string GetEnvVariable(string name)
         {
-            return Environment.GetEnvironmentVariable("MyEnvVar");
+            return Environment.GetEnvironmentVariable(name);
         }
     }
 }

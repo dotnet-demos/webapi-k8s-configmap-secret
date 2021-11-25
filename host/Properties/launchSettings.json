@@ -15,7 +15,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "MyEnvVar": "My value of MyEnvVar present in launchSettings.json"
+        "MySecretEnvVar": "Value of MySecretEnvVar present in launchSettings.json"
       }
     },
     "SimpleK8sConfiguration": {
